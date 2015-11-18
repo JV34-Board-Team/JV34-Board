@@ -8,8 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.catalina.Session;
 
 import jp.ac.board.*;
+import jp.ac.hal.Model;
 
 /**
  * Servlet implementation class BoardContoroller
@@ -22,17 +26,9 @@ public class BoardContoroller extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
 	
-//	private HashMap<String,Model> map;
-	
     public BoardContoroller() {
         super();
         // TODO Auto-generated constructor stub
-//        map = new HashMap<String, Model>();
-//        //keyÇuriÇ…ÇµÇƒêÿÇËï™ÇØÇÈÇÒÇ‚Ç≈(ÉjÉbÉRÉä)
-//        map.put("/FrontControl/control/add", new Add());
-//        map.put("/FrontControl/control/sub", new Sub());
-//        map.put("/FrontControl/control/mult", new Mult());
-//        map.put("/FrontControl/control/div", new Div());
     }
 
 	/**
@@ -40,6 +36,7 @@ public class BoardContoroller extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/index.jsp").forward(request,response);
 	}
 
 	/**
@@ -48,16 +45,31 @@ public class BoardContoroller extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
+		
 		String methodType = request.getParameter("type");
-		//
+		
 		if(methodType.equals("login")){
-			
+			String id = "";
+			String pass = "";
+			id = request.getParameter("id");
+			pass = request.getParameter("pass");
+			boolean b = new Login(id,pass);
+			request.setAttribute("status",b);
+			request.getRequestDispatcher("index.jsp").forward(request,response);
 		} else if(methodType.equals("logout")){
-			
+			boolean b = new Logout();
+			request.setAttribute("status",b);
+			request.getRequestDispatcher("index.jsp").forward(request,response);
 		}else if(methodType.equals("register")){
-			
+			request.getRequestDispatcher("register.jsp").forward(request,response);
 		}else if(methodType.equals("posting")){
-			
+			String anchor = "";
+			String comment = "";
+			anchor = request.getParameter("anchor");
+			comment = request.getParameter("comment");
+			boolean b = new Post(anchor,comment);
+			request.setAttribute("post_status",b);
+			request.getRequestDispatcher("index.jsp").forward(request,response);
 		}
 	}
 }
