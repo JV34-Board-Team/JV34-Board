@@ -13,8 +13,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.catalina.Session;
 
 import jp.ac.board.*;
-import jp.ac.hal.Model;
-
 /**
  * Servlet implementation class BoardContoroller
  */
@@ -65,8 +63,12 @@ public class BoardContoroller extends HttpServlet {
 		}else if(methodType.equals("posting")){
 			String anchor = "";
 			String comment = "";
-			anchor = request.getParameter("anchor");
-			comment = request.getParameter("comment");
+			if(request.getParameter("anchor") != null && request.getParameter("anchor").isEmpty()){
+				anchor = request.getParameter("anchor");
+			}
+			if(request.getParameter("comment") != null && request.getParameter("comment").isEmpty()){
+				comment = request.getParameter("comment");
+			}
 			boolean b = new Post(anchor,comment);
 			request.setAttribute("post_status",b);
 			request.getRequestDispatcher("index.jsp").forward(request,response);
