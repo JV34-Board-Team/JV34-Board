@@ -48,6 +48,25 @@ abstract class Dao {
 		return result;
 	}
 	
+	protected int insert(String query, Dao model) {
+		int ret = 0;
+		try {
+			prepare = conn.prepareStatement(query);
+			if(model instanceof Board) {
+				prepare.setInt(1, ((Board)model).getUserId());
+				prepare.setString(2, ((Board)model).getUserName());
+				prepare.setString(3, ((Board)model).getComment());
+			} else if(model instanceof User) {
+				prepare.setString(1, ((User)model).getUserName());
+				prepare.setInt(2, ((User)model).getSex());
+			}
+			ret = prepare.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return ret;
+	}
+	
 	protected void close() {
 		try {
 			if(result != null) {
