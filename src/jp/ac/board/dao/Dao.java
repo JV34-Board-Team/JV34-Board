@@ -58,7 +58,8 @@ abstract class Dao {
 				prepare.setString(3, ((Board)model).getComment());
 			} else if(model instanceof User) {
 				prepare.setString(1, ((User)model).getUserName());
-				prepare.setInt(2, ((User)model).getSex());
+				prepare.setString(2, ((User)model).getPasswd());
+				prepare.setInt(3, ((User)model).getSex());
 			}
 			ret = prepare.executeUpdate();
 		} catch (SQLException e) {
