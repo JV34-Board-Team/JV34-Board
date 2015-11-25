@@ -127,8 +127,8 @@ public class Board extends Dao {
 		return boards;
 	}
 	
-	public int insert(Board board) {
-		Dao model = board;
-		return insert("INSERT INTO t_board('userid', 'username', 'comment') values(?,?,?);", model);
+	public int insert() {
+		return insert("INSERT INTO t_board('userid', 'username', 'comment') values(?,?,?);",
+				((Dao)new Board(getId(), getUserId(), getUserName(), getComment(), getCreatedAt())));
 	}
 }

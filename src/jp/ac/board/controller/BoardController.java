@@ -66,17 +66,16 @@ public class BoardController extends HttpServlet {
 //		}else if(methodType.equals("register")){
 //			request.getRequestDispatcher("/WEB-INF/board/member_reg.jsp").forward(request,response);
 //		}else if(methodType.equals("posting")){
-//			String anchor = "";
-//			String comment = "";
-//			if(request.getParameter("anchor") != null && request.getParameter("anchor").isEmpty()){
-//				anchor = request.getParameter("anchor");
-//			}
-//			if(request.getParameter("comment") != null && request.getParameter("comment").isEmpty()){
-//				comment = request.getParameter("comment");
-//			}
-//			boolean b = new Post(anchor,comment);
+//			
+//			String anchor = (request.getParameter("anchor") != null && request.getParameter("anchor").isEmpty()) ?
+//					request.getParameter("anchor") : "";
+//			String comment = (request.getParameter("comment") != null && request.getParameter("comment").isEmpty()) ?
+//					request.getParameter("comment") : "";
+//
+//			boolean b = new Post(anchor, comment, request);
 //			request.setAttribute("post_status",b);
 //			request.getRequestDispatcher("/WEB-INF/board/index.jsp").forward(request,response);
+
 //		}else if(methodType.equals("search")){
 //			String searchwd = "";
 //			if(request.getParameter("searchwd") != null && request.getParameter("searchwd").isEmpty()){
