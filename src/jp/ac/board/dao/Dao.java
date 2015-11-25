@@ -14,21 +14,56 @@ abstract class Dao {
 	private PreparedStatement prepare;
 	private ResultSet result;
 	
-	public void open(String url, String userName, String passWord) throws ClassNotFoundException, SQLException {
-		Class.forName("com.mysql.jdbc.Driver");
-		conn = DriverManager.getConnection(url, userName, passWord);
+	final private String url = "localhost";
+	final private String userName = "root";
+	final private String passWord = "root";
+	
+	protected void open() {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(url, userName, passWord);
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
-	protected ResultSet selectAll(String query) throws SQLException {
-		state = conn.createStatement();
-		result = state.executeQuery(query);
+	protected ResultSet selectAll(String query) {
+		try {
+			state = conn.createStatement();
+			result = state.executeQuery(query);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return result;
 	}
 	
-	protected ResultSet selectWhere(String query, String where) throws SQLException {
-		prepare = conn.prepareStatement(query);
-		prepare.setString(1, where);
-		result = prepare.executeQuery();
+	protected ResultSet selectWhere(String query, String where) {
+		try {
+			prepare = conn.prepareStatement(query);
+			prepare.setString(1, where);
+			result = prepare.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return result;
+	}
+	
+	protected void close() {
+		try {
+			if(result != null) {
+				result.close();
+			}
+			if(prepare != null) {
+				prepare.close();
+			}
+			if(state != null) {
+				state.close();
+			}
+			if(conn != null) {
+				conn.close();
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

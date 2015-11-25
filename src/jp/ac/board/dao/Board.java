@@ -48,6 +48,7 @@ public class Board extends Dao {
 	
 	public ArrayList<Board> getAll() {
 		ArrayList<Board> boards = new ArrayList<>();
+		open();
 		try {
 			result = selectAll("SELECT * FROM v_board;");
 			while(result.next()) {
@@ -61,14 +62,14 @@ public class Board extends Dao {
 		} catch(SQLException e) {
 			System.out.println("Board Bean : " + e.getMessage());
 		} finally {
-			if(result != null)
-			try { result.close(); } catch(SQLException e) {}
+			close();
 		}
 		return boards;
 	}
 	
 	public ArrayList<Board> getSelect(String where) {
 		ArrayList<Board> boards = new ArrayList<>();
+		open();
 		try {
 			result = selectWhere("SELECT * FROM v_board where userName=?;", where);
 			while(result.next()) {
@@ -82,8 +83,7 @@ public class Board extends Dao {
 		} catch(SQLException e) {
 			System.out.println("Board Bean : " + e.getMessage());
 		} finally {
-			if(result != null)
-			try { result.close(); } catch(SQLException e) {}
+			close();
 		}
 		return boards;
 	}
