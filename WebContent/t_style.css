@@ -5,8 +5,25 @@ body{
 	margin-left:0;				/*左の余白を処理*/
 }
 /* ヘッター---------------------------------*/
-#menu li {
+/*メニューバー*/
+#menu{
+	width: 100%; 				/* ナビゲーションの幅 */
+	border-top: 1px #333333 solid;/* 上境界線 */
+	border-bottom: 1px #333333 solid;/* 上境界線 */
+	padding-top: 20px;			/*上の余白を変更*/
+	padding-bottom: 20px;		/*下の余白を変更*/
+}
+#menu li {	
 	display:inline;				/* 横並び指定 */
+	width: 100px; 				/* メニュー項目の幅 */
+	margin: 0 auto; 			/* センターに配置 */
+	padding-right: 50px;		/*右幅の余白変更*/
+	font-size:18px;				/*文字サイズ変更*/
+}
+#dropmenu{
+	visibility: visible;
+	transform: rotateX(0);
+	z-index: 10;
 }
 /* メイン内容-------------------------------*/
 

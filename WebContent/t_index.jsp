@@ -17,9 +17,24 @@
 	
 	<ul id="menu">
 		<!-- メニュー内容 -->
-		<li><a href="#">ログイン</a></li>
+		<li class="dropmenu">
+			 <table>
+	          <tr>
+	          	<td><p>ID<input class="login" type="text" name="id"></p></td>
+	          </tr>
+	          <tr>
+	          	<td><p>PASS<input class="login" type="password" name="passwd"></p></td>
+	          <td id="button">
+	            <input type="submit" value="IN">
+	          </td></tr>
+	        </table>
+		</li>
 		<li><a href="t_member_reg.jsp">新規登録</a></li>
-		<li>検索<form action="#" style="display:inline"><input type="text" name="search"></form></li>
+		<li>
+			<form action="#" style="display:inline"><input type="text" name="search">
+				<input type="submit" value="検索">
+			</form>
+		</li>
 	</ul>
 	
 </div>
