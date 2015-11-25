@@ -22,11 +22,72 @@ public class Board extends Dao {
 	}
 	
 	
+	
+	public int getId() {
+		return id;
+	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+
+	public int getUserId() {
+		return userId;
+	}
+
+
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+
+
+	public String getUserName() {
+		return userName;
+	}
+
+
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+
+
+	public String getComment() {
+		return comment;
+	}
+
+
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+
+
+	public String getCreatedAt() {
+		return createdAt;
+	}
+
+
+
+	public void setCreatedAt(String createdAt) {
+		this.createdAt = createdAt;
+	}
+
+
+
 	public ArrayList<Board> getAll() {
 		ArrayList<Board> boards = new ArrayList<>();
 		open();
 		try {
-			ResultSet result = selectAll("SELECT * FROM v_board;");
+			ResultSet result = selectAll("SELECT * FROM t_board;");
 			while(result.next()) {
 				boards.add(new Board(
 							result.getInt("id"),
@@ -48,7 +109,7 @@ public class Board extends Dao {
 		ArrayList<Board> boards = new ArrayList<>();
 		open();
 		try {
-			ResultSet result = selectWhere("SELECT * FROM v_board where userName=?;", where);
+			ResultSet result = selectWhere("SELECT * FROM t_board where userid=?;", where);
 			while(result.next()) {
 				boards.add(new Board(
 							result.getInt("id"),
@@ -64,5 +125,10 @@ public class Board extends Dao {
 			close();
 		}
 		return boards;
+	}
+	
+	public int insert(Board board) {
+		Dao model = board;
+		return insert("INSERT INTO t_board('userid', 'username', 'comment') values(?,?,?);", model);
 	}
 }
