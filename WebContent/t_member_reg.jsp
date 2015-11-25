@@ -5,7 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>会員登録</title>
-<link rel="stylesheet" href="t_style.css" type="text/css">
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<link rel="stylesheet" href="css/reg_style.css" type="text/css">
 </head>
 <body>
 
@@ -53,7 +54,7 @@
 		</table>
 			
 		<div id="submit_button">
-			<p><input type="submit" value="登録"></p>
+			<p><input id="reg_button" type="submit" value="登録"></p>
 		</div>
 		
 	</form>
