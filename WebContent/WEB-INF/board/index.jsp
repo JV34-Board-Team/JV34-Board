@@ -1,52 +1,155 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%  %>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>掲示板(´・ω・`)</title>
+<link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
 <!-- =============== ヘッダー =============== -->
 <div id="header">
 
-<h1>掲示板(´・ω・`)</h1>
-
-<ul id="menu">
-<!-- メニュー増減はここから -->
-<li><a href="index.html">blog</a></li>
-<li>::</li>
-<li><a href="#off">offline</a></li>
-<li>::</li>
-<li><a href="#about">about</a></li>
-<li>::</li>
-<li><a href="#bkm">bkm</a></li>
-<!-- メニュー増減はここまで -->
-</ul>
-
-
+	<h1>掲示板(´・ω・`)</h1>
+	
+	<ul id="menu">
+		<!-- メニュー内容 -->
+		<li><a href="#">ログイン</a></li>
+		<li><a href="member_reg.jsp">新規登録</a></li>
+		<li>検索<form action="#" style="display:inline"><input type="text" name="search"></form></li>
+	</ul>
+	
 </div>
 
+<!-- =============== メイン =============== -->
 
+<div id="board_main">
 
-<!-- =============== メイン↓ =============== -->
-
-
+	<!-- コメント -->
+	<div class="res">
+		<div class="res_head">
+			<span class="res_number">1</span>:
+			<span class="res_name">投稿者名</span>
+		</div>
+		<div class="res_body">
+			<p>コメント</p>
+		</div>
+		<div class="res_foot">
+			<span class="res_day">投稿日</span>
+		</div>
+	</div>
+	
+	
+	<div class="res">
+		<div class="res_head">
+			<span class="res_number">2</span>:
+			<span class="res_name">投稿者名</span>
+		</div>
+		<div class="res_body">
+			<p>コメント</p>
+		</div>
+		<div class="res_foot">
+			<span class="res_day">投稿日</span>
+		</div>
+	</div>
+	
+	
+	<div class="res">
+		<div class="res_head">
+			<span class="res_number">3</span>:
+			<span class="res_name">投稿者名</span>
+		</div>
+		<div class="res_body">
+			<p>コメント</p>
+		</div>
+		<div class="res_foot">
+			<span class="res_day">投稿日</span>
+		</div>
+	</div>
+	
+	
+	<div class="res">
+		<div class="res_head">
+			<span class="res_number">3</span>:
+			<span class="res_name">投稿者名</span>
+		</div>
+		<div class="res_body">
+			<p>コメント</p>
+		</div>
+		<div class="res_foot">
+			<span class="res_day">投稿日</span>
+		</div>
+	</div>
+	
+	
+	<div class="res">
+		<div class="res_head">
+			<span class="res_number">3</span>:
+			<span class="res_name">投稿者名</span>
+		</div>
+		<div class="res_body">
+			<p>コメント</p>
+		</div>
+		<div class="res_foot">
+			<span class="res_day">投稿日</span>
+		</div>
+	</div>
+	
+	
+	<div class="res">
+		<div class="res_head">
+			<span class="res_number">3</span>:
+			<span class="res_name">投稿者名</span>
+		</div>
+		<div class="res_body">
+			<p>コメント</p>
+		</div>
+		<div class="res_foot">
+			<span class="res_day">投稿日</span>
+		</div>
+	</div>
+	
+	
+	<div class="res">
+		<div class="res_head">
+			<span class="res_number">3</span>:
+			<span class="res_name">投稿者名</span>
+		</div>
+		<div class="res_body">
+			<p>コメント</p>
+		</div>
+		<div class="res_foot">
+			<span class="res_day">投稿日</span>
+		</div>
+	</div>
+	
+	<div class="res">
+		<div class="res_head">
+			<span class="res_number">4</span>:
+			<span class="res_name">投稿者名</span>
+		</div>
+		<div class="res_body">
+			<p>最後</p>
+		</div>
+		<div class="res_foot">
+			<span class="res_day">投稿日</span>
+		</div>
+	</div>
+</div>
 	
 <!-- =============== フッター =============== -->
 <div id="footer">
 
-
-<ul>
-<li><!-- カウンター --><img src="img/count.gif" width="55" height="11" alt=""></li>
-<li>::</li>
-<li><a href="http://mintblue.vivian.jp/" target="_blank" title="写真素材/ミントBlue">ミントBlue</a></li>
-<li>::</li>
-<li><a href="http://sky.starlit.biz/" target="_blank" title="テンプレート/Starlit">Starlit</a></li>
-<li>::</li>
-<li><a href="index.html" title="ページトップ">PAGE TOP↑</a></li>
-</ul>
-
+	<div id="comment_form">
+		<form action="">
+			アンカー:<input type="number" name="anchor"><br />
+			コメント:<input type="text" name="comment" id="post_comment">	<br />
+			<input type="submit" name="action" value="投稿">
+		</form>
+	</div>
 
 </div>
 
