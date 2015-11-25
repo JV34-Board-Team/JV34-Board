@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>掲示板(´・ω・`)</title>
-<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="stylesheet" href="../css/style.css" type="text/css">
 </head>
 <body>
 <!-- =============== ヘッダー =============== -->

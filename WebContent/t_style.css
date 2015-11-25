@@ -20,10 +20,44 @@ body{
 	padding-right: 50px;		/*右幅の余白変更*/
 	font-size:18px;				/*文字サイズ変更*/
 }
-#dropmenu{
+nav#menubar ul li.dropmenu {
+	float: left;
+	width: 150px;	/*メニュー幅*/
+	text-align: center;
+	z-index: 10;
+}
+
+nav#menubar ul li.dropmenu ul{
+	width: 150px;	/*メニュー幅*/
+	text-align: center;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+nav#menubar ul li.dropmenu ul li{
+	background: #6699ff;
+	height: 30px;
+	border-bottom: 1px solid blue;
+}
+
+nav#menubar ul li.dropmenu:hover ul{
 	visibility: visible;
 	transform: rotateX(0);
 	z-index: 10;
+}
+
+nav#menubar ul li.dropmenu a {
+	color: #FFF;		/*文字色*/
+	text-decoration: none;
+	display: block;
+	line-height: 60px;
+}
+.dropmenu ul{
+  visibility: hidden;
+  transform: rotateX(-90deg);
+  transform-origin: 50% 0;
+  transition: .3s;
 }
 /* メイン内容-------------------------------*/
 

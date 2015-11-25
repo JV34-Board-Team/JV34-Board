@@ -17,17 +17,22 @@
 	
 	<ul id="menu">
 		<!-- メニュー内容 -->
-		<li class="dropmenu">
-			 <table>
-	          <tr>
-	          	<td><p>ID<input class="login" type="text" name="id"></p></td>
-	          </tr>
-	          <tr>
-	          	<td><p>PASS<input class="login" type="password" name="passwd"></p></td>
-	          <td id="button">
-	            <input type="submit" value="IN">
-	          </td></tr>
-	        </table>
+		<li class="dropmenu"><a href="#">LOGIN</a>
+		  <ul class="hide">
+		    <li>
+		      <form action="LoginServlet" method="post">
+		        <table>
+		          <tr>
+		          	<td><p>ID<input class="login" type="text" name="id"></p></td>
+		          </tr>
+		          <tr>
+		          	<td><p>PASS<input class="login" type="password" name="passwd"></p></td>
+		          	<td><input type="submit" value="IN"></td>
+		          </tr>
+		        </table>
+		      </form>
+		    </li>
+		  </ul>
 		</li>
 		<li><a href="t_member_reg.jsp">新規登録</a></li>
 		<li>
