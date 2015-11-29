@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>掲示板(´・ω・`)</title>
-<link rel="stylesheet" href="t_style.css" type="text/css">
+<link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
 <!-- =============== ヘッダー =============== -->
@@ -17,17 +17,12 @@
 	
 	<ul id="menu">
 		<!-- メニュー内容 -->
-		<li class="dropmenu">
-			 <table>
-	          <tr>
-	          	<td><p>ID<input class="login" type="text" name="id"></p></td>
-	          </tr>
-	          <tr>
-	          	<td><p>PASS<input class="login" type="password" name="passwd"></p></td>
-	          <td id="button">
-	            <input type="submit" value="IN">
-	          </td></tr>
-	        </table>
+		<li><div id="login"><label for="panel">LOGIN</label></div>
+		  <input type="checkbox" id="panel" class="onoff">
+		  <ul id="pull">
+		  	<li>ID<input type="text" name="userid"></li>
+		  	<li>PW<input type="text" name="userpw"></li>
+		  </ul>
 		</li>
 		<li><a href="t_member_reg.jsp">新規登録</a></li>
 		<li>
@@ -160,9 +155,9 @@
 
 	<div id="comment_form">
 		<form action="">
-			アンカー:<input type="number" name="anchor"><br />
-			コメント:<input type="text" name="comment" id="post_comment">	<br />
-			<input type="submit" name="action" value="投稿">
+			<div id="comment_an">アンカー:<input type="number" name="anchor"></div>
+			<div id="comment_co">コメント:<input type="text" name="comment" id="post_comment"></div>
+			<input id="post_button" type="submit" name="action" value="投稿">
 		</form>
 	</div>
 

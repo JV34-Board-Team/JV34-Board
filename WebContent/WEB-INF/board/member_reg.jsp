@@ -5,7 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>会員登録</title>
-<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="stylesheet" href="../css/style.css" type="text/css">
+<link rel="stylesheet" href="../css/reg_style.css" type="text/css">
 </head>
 <body>
 

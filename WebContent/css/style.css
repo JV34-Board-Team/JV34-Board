@@ -24,10 +24,10 @@ body{
 }
 /*loginのラベルのデザイン設定*/
 #login{
-	width: 55px;
-	padding:5px;
-	margin-bottom:5px;
-	border:solid 1px;
+	width: 55px;				/*横幅の設定*/
+	padding:5px;				/*余白の設定*/
+	margin-bottom:5px;			/*下に余白を設定*/
+	border:solid 1px;			/*黒線の設定*/
 }
 
 /*ログインのアクション*/
@@ -37,9 +37,9 @@ body{
     -ms-transition: all 0.5s;
     -o-transition: all 0.5s;
     transition: all 0.5s;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    margin: 0;					/*余白の設定*/
+    padding: 0;					/*余白の設定*/
+    list-style: none;			/*非表示設定*/
 }
 
 /*LOGINラベルのアクション設定*/
@@ -64,7 +64,7 @@ input[type="checkbox"].onoff:checked + ul{
 
 /*コメント全体の枠*/
 .res{
-	background:#ffcc66;
+	background:#ffcc66;			/*投稿されたコメントの背景の色を変更*/
 	margin: 0 0 10px 0;			/*投稿されたコメント枠の余白を変更*/
 	border:solid 1px;			/*投稿されたコメント枠に黒線を設定*/
 }
@@ -90,22 +90,23 @@ input[type="checkbox"].onoff:checked + ul{
 }
 /*アンカーデザイン*/
 #comment_an{
-	background-color:#cc9966;
-	border:solid 1px;
-	width:233px;
-	margin:10px 0 5px 0;}
+	background-color:#cc9966;	/*背景の色を設定*/
+	border:solid 1px;			/*黒線の設定*/
+	width:233px;				/*横幅の調節*/
+	margin:10px 0 5px 0;		/*余白の設定*/
+}
 /*コメントデザイン*/
 #comment_co{
-	background-color:#cc9966;
-	border:solid 1px;
-	width:656px;
-	margin-bottom:10px;
+	background-color:#cc9966;	/*背景の設定*/
+	border:solid 1px;			/*黒線の設定*/
+	width:656px;				/*横幅の設定*/
+	margin-bottom:10px;			/*下に余白を設定*/
 }
 /*投稿ボタンデザイン*/
 #post_button{
-	font-size:20px;
-	width:200px;
-	height:40px;
+	font-size:20px;				/*文字サイズの変更*/
+	width:200px;				/*横幅の設定*/
+	height:40px;				/*縦幅の設定*/
 }
 /*投稿枠*/
 #post_comment{
