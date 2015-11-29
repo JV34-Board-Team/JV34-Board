@@ -8,13 +8,18 @@ public class User extends Dao {
 	
 	private int userId;
 	private String userName;
+	private String passwd;
 	private int sex;
 	private String createdat;
 	
-	public User(int userId, String userName, int sex, String createdat) {
+	public User() {
+	}
+
+	public User(int userId, String userName, String passwd ,int sex, String createdat) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
+		this.passwd = passwd;
 		this.sex = sex;
 		this.createdat = createdat;
 	}
@@ -29,6 +34,14 @@ public class User extends Dao {
 
 	public String getUserName() {
 		return userName;
+	}
+	
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
+	}
+	
+	public String getPasswd() {
+		return passwd;
 	}
 
 	public void setUserName(String userName) {
@@ -60,6 +73,7 @@ public class User extends Dao {
 				users.add(new User(
 							result.getInt("id"),
 							result.getString("username"),
+							result .getString("passwd"),
 							result.getInt("sex"),
 							result.getString("createdat")
 						));
@@ -81,6 +95,7 @@ public class User extends Dao {
 				users.add(new User(
 							result.getInt("id"),
 							result.getString("username"),
+							result.getString("passwd"),
 							result.getInt("userid"),
 							result.getString("createdat")
 						));
@@ -95,6 +110,6 @@ public class User extends Dao {
 	
 	public int insert(User user) {
 		Dao model = user;
-		return insert("INSERT INTO t_user('username', 'sex') values(?,?);", model);
+		return insert("INSERT INTO t_user('username', 'password','sex') values(?,?,?);", model);
 	}
 }
