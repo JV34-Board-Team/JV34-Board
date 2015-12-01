@@ -18,10 +18,13 @@
 		<!-- メニュー内容 -->
 		<li><div id="login"><label for="panel">LOGIN</label></div>
 		  <input type="checkbox" id="panel" class="onoff">
+		  <form action="${pageContext.request.contextPath}/BoardController" method="post">
 		  <ul id="pull">
-		  	<li>ID<input type="text" name="userid"></li>
-		  	<li>PW<input type="text" name="userpw"></li>
+		  	<li>ID<input type="text" name="id"></li>
+		  	<li>PW<input type="text" name="pass"></li>
 		  </ul>
+		  <input type="hidden" name="type" value="post">
+		  </form>
 		</li>
 		<li><a href="${pageContext.request.contextPath}/BoardController?type=registerpage">新規登録</a></li>
 		<li>

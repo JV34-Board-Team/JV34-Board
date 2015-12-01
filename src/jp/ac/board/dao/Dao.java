@@ -14,7 +14,7 @@ abstract class Dao {
 	private PreparedStatement prepare;
 	private ResultSet result;
 	
-	final private String url = "localhost";
+	final private String url = "jdbc:mysql://localhost/JV34";
 	final private String userName = "root";
 	final private String passWord = "root";
 	

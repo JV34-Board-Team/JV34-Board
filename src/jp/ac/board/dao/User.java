@@ -68,12 +68,12 @@ public class User extends Dao {
 		ArrayList<User> users = new ArrayList<>();
 		open();
 		try {
-			ResultSet result = selectAll("SELECT * FROM t_user;");
+			ResultSet result = selectAll("SELECT * FROM user;");
 			while(result.next()) {
 				users.add(new User(
-							result.getInt("id"),
+							result.getInt("userId"),
 							result.getString("username"),
-							result .getString("passwd"),
+							result.getString("password"),
 							result.getInt("sex"),
 							result.getString("createdat")
 						));
@@ -90,7 +90,7 @@ public class User extends Dao {
 		ArrayList<User> users = new ArrayList<>();
 		open();
 		try {
-			ResultSet result = selectWhere("SELECT * FROM t_user where username=?;", where);
+			ResultSet result = selectWhere("SELECT * FROM user where username=?;", where);
 			while(result.next()) {
 				users.add(new User(
 							result.getInt("id"),
@@ -108,8 +108,12 @@ public class User extends Dao {
 		return users;
 	}
 	
-	public int insert(User user) {
-		Dao model = user;
-		return insert("INSERT INTO t_user('username', 'password','sex') values(?,?,?);", model);
+	public int insert() {
+		open();
+		int ret = 0;
+		ret = insert("INSERT INTO user(userName,password,sex) values(?,?,?);",
+				(Dao)new User(getUserId(), getUserName(), getPasswd(), getSex(), getCreatedat()));
+		close();
+		return ret;
 	}
 }

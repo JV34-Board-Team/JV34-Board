@@ -109,7 +109,7 @@ public class Board extends Dao {
 		ArrayList<Board> boards = new ArrayList<>();
 		open();
 		try {
-			ResultSet result = selectWhere("SELECT * FROM t_board where userid=?;", where);
+			ResultSet result = selectWhere("SELECT * FROM board where userid=?;", where);
 			while(result.next()) {
 				boards.add(new Board(
 							result.getInt("boardId"),
@@ -128,7 +128,7 @@ public class Board extends Dao {
 	}
 	
 	public int insert() {
-		return insert("INSERT INTO t_board('userid', 'username', 'comment') values(?,?,?);",
+		return insert("INSERT INTO board('userid', 'username', 'comment') values(?,?,?);",
 				((Dao)new Board(getBoardId(), getUserId(), getUserName(), getComment(), getCreatedAt())));
 	}
 }
