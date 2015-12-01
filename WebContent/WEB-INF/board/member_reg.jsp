@@ -5,8 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>会員登録</title>
-<link rel="stylesheet" href="../css/style.css" type="text/css">
-<link rel="stylesheet" href="../css/reg_style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reg_style.css" type="text/css">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
 	<h2>会員登録</h2>
 	
 	<!-- 情報を入力するフォーム -->
-	<form action="#" method="POST" name="form">
+	<form action="${pageContext.request.contextPath}/BoardController" method="POST" name="form">
 		<table class="reg_information">
 			<tr>
 				<th>ユーザー名</th>
@@ -47,8 +47,8 @@
 			<tr>
 				<th>性別</th>
 				<td>
-					<input type="radio" name="gender" value="">男性
-					<input type="radio" name="gender" value="">女性
+					<input type="radio" name="gender" value="0">男性
+					<input type="radio" name="gender" value="1">女性
 				</td>
 			</tr>
 		</table>

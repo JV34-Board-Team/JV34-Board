@@ -6,31 +6,31 @@ import java.util.ArrayList;
 
 public class Board extends Dao {
 	
-	private int id;
+	private int boardId;
 	private int userId;
 	private String userName;
 	private String comment;
 	private String createdAt;
 	
-	public Board(int id, int userId, String userName, String comment, String createdAt) {
+	public Board(int boardId, int userId, String userName, String comment, String createdAt) {
 		super();
-		this.id = id;
+		this.boardId = boardId;
 		this.userId = userId;
 		this.userName = userName;
 		this.comment = comment;
 		this.createdAt = createdAt;
 	}
+
 	
 	
-	
-	public int getId() {
-		return id;
+	public int getBoardId() {
+		return boardId;
 	}
 
 
 
-	public void setId(int id) {
-		this.id = id;
+	public void setBoardId(int boardId) {
+		this.boardId = boardId;
 	}
 
 
@@ -90,9 +90,9 @@ public class Board extends Dao {
 			ResultSet result = selectAll("SELECT * FROM t_board;");
 			while(result.next()) {
 				boards.add(new Board(
-							result.getInt("id"),
-							result.getInt("userid"),
-							result.getString("username"),
+							result.getInt("boardId"),
+							result.getInt("userId"),
+							result.getString("userName"),
 							result.getString("comment"),
 							result.getString("createdat")
 						));
@@ -112,9 +112,9 @@ public class Board extends Dao {
 			ResultSet result = selectWhere("SELECT * FROM t_board where userid=?;", where);
 			while(result.next()) {
 				boards.add(new Board(
-							result.getInt("id"),
-							result.getInt("userid"),
-							result.getString("username"),
+							result.getInt("boardId"),
+							result.getInt("userId"),
+							result.getString("userName"),
 							result.getString("comment"),
 							result.getString("createdat")
 						));
@@ -129,6 +129,6 @@ public class Board extends Dao {
 	
 	public int insert() {
 		return insert("INSERT INTO t_board('userid', 'username', 'comment') values(?,?,?);",
-				((Dao)new Board(getId(), getUserId(), getUserName(), getComment(), getCreatedAt())));
+				((Dao)new Board(getBoardId(), getUserId(), getUserName(), getComment(), getCreatedAt())));
 	}
 }

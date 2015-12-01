@@ -34,7 +34,14 @@ public class BoardController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/board/index.jsp").forward(request,response);
+		String respPage = "/WEB-INF/board/index.jsp";
+		String methodType = request.getParameter("type");
+	
+		if("registerpage".equals(methodType) && methodType != null) {
+				respPage = "/WEB-INF/board/member_reg.jsp";
+		}
+		
+		request.getRequestDispatcher(respPage).forward(request,response);
 	}
 
 	/**
@@ -47,7 +54,7 @@ public class BoardController extends HttpServlet {
 		if(request.getParameter("type") != null && request.getParameter("type").isEmpty()){
 			methodType = request.getParameter("type");
 		}
-//		if(methodType.equals("login")){
+		if(methodType.equals("login")){
 //			String id = "";
 //			String pass = "";
 //			if(request.getParameter("id") != null && request.getParameter("id").isEmpty()){
@@ -59,13 +66,14 @@ public class BoardController extends HttpServlet {
 //			boolean b = new Login(id,pass);
 //			request.setAttribute("status",b);
 //			request.getRequestDispatcher("/WEB-INF/board/index.jsp").forward(request,response);
-//		} else if(methodType.equals("logout")){
+		} else if(methodType.equals("logout")){
 //			boolean b = new Logout();
 //			request.setAttribute("status",b);
 //			request.getRequestDispatcher("/WEB-INF/board/index.jsp").forward(request,response);
-//		}else if(methodType.equals("register")){
-//			request.getRequestDispatcher("/WEB-INF/board/member_reg.jsp").forward(request,response);
-//		}else if(methodType.equals("posting")){
+		}else if(methodType.equals("register")){
+			
+			request.getRequestDispatcher("/WEB-INF/board/member_reg.jsp").forward(request,response);
+		}else if(methodType.equals("posting")){
 //			
 //			String anchor = (request.getParameter("anchor") != null && request.getParameter("anchor").isEmpty()) ?
 //					request.getParameter("anchor") : "";
@@ -76,7 +84,7 @@ public class BoardController extends HttpServlet {
 //			request.setAttribute("post_status",b);
 //			request.getRequestDispatcher("/WEB-INF/board/index.jsp").forward(request,response);
 
-//		}else if(methodType.equals("search")){
+		}else if(methodType.equals("search")){
 //			String searchwd = "";
 //			if(request.getParameter("searchwd") != null && request.getParameter("searchwd").isEmpty()){
 //				searchwd = request.getParameter("searchwd");
@@ -84,8 +92,8 @@ public class BoardController extends HttpServlet {
 //		boolean b = new Search(searchwd);
 //		request.setAttribute("search_status",b);
 //		request.getRequestDispatcher("/WEB-INF/board/index.jsp").forward(request,response);
-//		}else{
+		}else{
 //		request.getRequestDispatcher("/WEB-INF/board/index.jsp").forward(request,response);
-//		}
+		}
 	}
 }
