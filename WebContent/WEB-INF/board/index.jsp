@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>掲示板(´・ω・`)</title>
-<link rel="stylesheet" href="../css/style.css" type="text/css">
+<link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
 <!-- =============== ヘッダー =============== -->
@@ -17,16 +17,17 @@
 	
 	<ul id="menu">
 		<!-- メニュー内容 -->
-		<li><div id="login"><label for="panel">LOGIN</label></div>
+		<li>
 		  <input type="checkbox" id="panel" class="onoff">
-		  <ul id="pull">
-		  	<li>ID<input type="text" name="userid"></li>
-		  	<li>PW<input type="text" name="userpw"></li>
-		  </ul>
-		</li>
+		  <form action="" method="POST">
+		  	ID:<input type="text" name="userid">
+		  	PW:<input type="text" name="userpw">
+		  	<input type="submit" value="ログイン">
+		  </form>
+		</li><br />
 		<li><a href="t_member_reg.jsp">新規登録</a></li>
 		<li>
-			<form action="#" style="display:inline"><input type="text" name="search">
+			<form action="#" method="POST" style="display:inline"><input type="text" name="search">
 				<input type="submit" value="検索">
 			</form>
 		</li>
@@ -155,9 +156,9 @@
 
 	<div id="comment_form">
 		<form action="">
-			アンカー:<input type="number" name="anchor"><br />
-			コメント:<input type="text" name="comment" id="post_comment">	<br />
-			<input type="submit" name="action" value="投稿">
+			<div id="comment_an">アンカー:<input type="number" name="anchor"></div>
+			<div id="comment_co">コメント:<input type="text" name="comment" id="post_comment"></div>
+			<input id="post_button" type="submit" name="action" value="投稿">
 		</form>
 	</div>
 
