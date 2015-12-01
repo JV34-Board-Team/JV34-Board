@@ -17,13 +17,14 @@
 	
 	<ul id="menu">
 		<!-- メニュー内容 -->
-		<li><div id="login"><label for="panel">LOGIN</label></div>
+		<li>
 		  <input type="checkbox" id="panel" class="onoff">
-		  <ul id="pull">
-		  	<li>ID<input type="text" name="userid"></li>
-		  	<li>PW<input type="text" name="userpw"></li>
-		  </ul>
-		</li>
+			<form action="" method="POST">
+			  	ID:<input type="text" name="userid">
+			  	PW:<input type="text" name="userpw">
+			  	<input type="submit" value="ログイン">
+		  	</form>
+		</li><br />
 		<li><a href="t_member_reg.jsp">新規登録</a></li>
 		<li>
 			<form action="#" style="display:inline"><input type="text" name="search">
