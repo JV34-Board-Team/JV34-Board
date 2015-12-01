@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.catalina.Session;
 
 import jp.ac.board.*;
-import jp.ac.board.model.Login;
 /**
  * Servlet implementation class BoardContoroller
  */
@@ -45,27 +44,25 @@ public class BoardController extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		String methodType = "hogehoge";
-		Login login = new Login();
 		if(request.getParameter("type") != null && request.getParameter("type").isEmpty()){
 			methodType = request.getParameter("type");
 		}
-		if(methodType.equals("login")){
-			int id = 0;
-			String pass = "";
-			if(request.getParameter("id") != null && request.getParameter("id").isEmpty()){
-				id = Integer.parseInt(request.getParameter("id"));
-			}
-			if(request.getParameter("pass") != null && request.getParameter("pass").isEmpty()){
-				pass = request.getParameter("pass");
-			}
-			boolean b = login.login(id, pass, request);
-			request.setAttribute("status",b);
-			request.getRequestDispatcher("/WEB-INF/board/index.jsp").forward(request,response);
-		} else if(methodType.equals("logout")){
-			boolean b = login.logout(request);
-			request.setAttribute("status",b);
-			request.getRequestDispatcher("/WEB-INF/board/index.jsp").forward(request,response);
-		}
+//		if(methodType.equals("login")){
+//			String id = "";
+//			String pass = "";
+//			if(request.getParameter("id") != null && request.getParameter("id").isEmpty()){
+//				id = request.getParameter("id");
+//			}
+//			if(request.getParameter("pass") != null && request.getParameter("pass").isEmpty()){
+//				pass = request.getParameter("pass");
+//			}
+//			boolean b = new Login(id,pass);
+//			request.setAttribute("status",b);
+//			request.getRequestDispatcher("/WEB-INF/board/index.jsp").forward(request,response);
+//		} else if(methodType.equals("logout")){
+//			boolean b = new Logout();
+//			request.setAttribute("status",b);
+//			request.getRequestDispatcher("/WEB-INF/board/index.jsp").forward(request,response);
 //		}else if(methodType.equals("register")){
 //			request.getRequestDispatcher("/WEB-INF/board/member_reg.jsp").forward(request,response);
 //		}else if(methodType.equals("posting")){

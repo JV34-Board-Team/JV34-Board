@@ -22,7 +22,7 @@ public class Login {
 		this.request = request;
 	}
 	
-	public boolean login(int id,String passwd,HttpServletRequest request){
+	public boolean login(){
 		User user = new User();
 		ArrayList<User> users = user.getAll();
 		for(User u : users){
@@ -37,10 +37,10 @@ public class Login {
 		return false;
 	}
 	
-	public boolean logout(HttpServletRequest request){
+	public boolean logout(){
 		HttpSession session = request.getSession();
 		session.removeAttribute("User");
-		return true;
+		return false;
 	}
 
 }
