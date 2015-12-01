@@ -46,9 +46,11 @@ public class BoardController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String methodType = "hogehoge";
 		Login login = new Login();
+		
 		if(request.getParameter("type") != null && request.getParameter("type").isEmpty()){
 			methodType = request.getParameter("type");
 		}
+		
 		if(methodType.equals("login")){
 			int id = 0;
 			String pass = "";

@@ -1,4 +1,5 @@
 package jp.ac.board.model;
+
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
