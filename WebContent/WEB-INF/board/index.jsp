@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList,jp.ac.board.dao.*" %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>掲示板(´・ω・`)</title>
-<link rel="stylesheet" href="../css/style.css" type="text/css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 </head>
 <body>
 <!-- =============== ヘッダー =============== -->
@@ -23,7 +23,7 @@
 		  	<li>PW<input type="text" name="userpw"></li>
 		  </ul>
 		</li>
-		<li><a href="t_member_reg.jsp">新規登録</a></li>
+		<li><a href="${pageContext.request.contextPath}/BoardController?type=registerpage">新規登録</a></li>
 		<li>
 			<form action="#" style="display:inline"><input type="text" name="search">
 				<input type="submit" value="検索">
@@ -36,126 +36,42 @@
 <!-- =============== メイン =============== -->
 
 <div id="board_main">
-
+	<%
+	ArrayList<Board> boards = (ArrayList<Board>)request.getAttribute("boards");
+	if(boards != null && boards.size() > 0) {
+		for(Board board:boards) {
+	%>
 	<!-- コメント -->
 	<div class="res">
 		<div class="res_head">
-			<span class="res_number">1</span>:
-			<span class="res_name">投稿者名</span>
+			<span class="res_number"><%= board.getBoardId() %></span>:
+			<span class="res_name"><%= board.getUserName() %></span>
 		</div>
 		<div class="res_body">
-			<p>コメント</p>
+			<p><%= board.getComment() %></p>
 		</div>
 		<div class="res_foot">
-			<span class="res_day">投稿日</span>
+			<span class="res_day"><%= board.getCreatedAt() %></span>
 		</div>
 	</div>
-	
-	
+	<%
+		}
+	} else {
+	%>
 	<div class="res">
-		<div class="res_head">
-			<span class="res_number">2</span>:
-			<span class="res_name">投稿者名</span>
-		</div>
-		<div class="res_body">
-			<p>コメント</p>
-		</div>
-		<div class="res_foot">
-			<span class="res_day">投稿日</span>
-		</div>
+	<p>投稿はありません</p>
 	</div>
-	
-	
-	<div class="res">
-		<div class="res_head">
-			<span class="res_number">3</span>:
-			<span class="res_name">投稿者名</span>
-		</div>
-		<div class="res_body">
-			<p>コメント</p>
-		</div>
-		<div class="res_foot">
-			<span class="res_day">投稿日</span>
-		</div>
-	</div>
-	
-	
-	<div class="res">
-		<div class="res_head">
-			<span class="res_number">3</span>:
-			<span class="res_name">投稿者名</span>
-		</div>
-		<div class="res_body">
-			<p>コメント</p>
-		</div>
-		<div class="res_foot">
-			<span class="res_day">投稿日</span>
-		</div>
-	</div>
-	
-	
-	<div class="res">
-		<div class="res_head">
-			<span class="res_number">3</span>:
-			<span class="res_name">投稿者名</span>
-		</div>
-		<div class="res_body">
-			<p>コメント</p>
-		</div>
-		<div class="res_foot">
-			<span class="res_day">投稿日</span>
-		</div>
-	</div>
-	
-	
-	<div class="res">
-		<div class="res_head">
-			<span class="res_number">3</span>:
-			<span class="res_name">投稿者名</span>
-		</div>
-		<div class="res_body">
-			<p>コメント</p>
-		</div>
-		<div class="res_foot">
-			<span class="res_day">投稿日</span>
-		</div>
-	</div>
-	
-	
-	<div class="res">
-		<div class="res_head">
-			<span class="res_number">3</span>:
-			<span class="res_name">投稿者名</span>
-		</div>
-		<div class="res_body">
-			<p>コメント</p>
-		</div>
-		<div class="res_foot">
-			<span class="res_day">投稿日</span>
-		</div>
-	</div>
-	
-	<div class="res">
-		<div class="res_head">
-			<span class="res_number">4</span>:
-			<span class="res_name">投稿者名</span>
-		</div>
-		<div class="res_body">
-			<p>最後</p>
-		</div>
-		<div class="res_foot">
-			<span class="res_day">投稿日</span>
-		</div>
-	</div>
-</div>
-	
+	<%
+	}
+	%>
 <!-- =============== フッター =============== -->
 <div id="footer">
 
 	<div id="comment_form">
-		<form action="">
+		<form action="${pageContext.request.contextPath}/BoardController">
 			アンカー:<input type="number" name="anchor"><br />
 			コメント:<input type="text" name="comment" id="post_comment">	<br />
+			<input type="hidden" name="type" value="posting">
 			<input type="submit" name="action" value="投稿">
 		</form>
 	</div>

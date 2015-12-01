@@ -9,7 +9,7 @@ CREATE TABLE board
 	userId int(10) NOT NULL,
 	userName varchar(20),
 	comment varchar(255),
-	createday timestamp,
+	createdat timestamp,
 	PRIMARY KEY (boardId)
 );
 
