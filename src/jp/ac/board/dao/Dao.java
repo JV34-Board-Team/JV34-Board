@@ -16,7 +16,7 @@ abstract class Dao {
 	
 	final private String url = "jdbc:mysql://localhost/JV34";
 	final private String userName = "root";
-	final private String passWord = "";
+	final private String passWord = "root";
 	
 	protected void open() {
 		try {

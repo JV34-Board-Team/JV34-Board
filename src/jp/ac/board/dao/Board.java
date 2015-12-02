@@ -12,9 +12,8 @@ public class Board extends Dao {
 	private String comment;
 	private String createdAt;
 	
-	public Board(){
-		
-	}
+
+	public Board() {}
 	
 	public Board(int boardId, int userId, String userName, String comment, String createdAt) {
 		super();
@@ -91,7 +90,7 @@ public class Board extends Dao {
 		ArrayList<Board> boards = new ArrayList<>();
 		open();
 		try {
-			ResultSet result = selectAll("SELECT * FROM t_board;");
+			ResultSet result = selectAll("SELECT * FROM board;");
 			while(result.next()) {
 				boards.add(new Board(
 							result.getInt("boardId"),
@@ -132,7 +131,12 @@ public class Board extends Dao {
 	}
 	
 	public int insert() {
-		return insert("INSERT INTO board('userid', 'username', 'comment') values(?,?,?);",
+		open();
+		int ret = 0;
+		
+		ret = insert("INSERT INTO board(userId, userName, comment) values(?,?,?);",
 				((Dao)new Board(getBoardId(), getUserId(), getUserName(), getComment(), getCreatedAt())));
+		
+		return ret;
 	}
 }

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.catalina.Session;
 
 import jp.ac.board.*;
+import jp.ac.board.dao.Board;
 import jp.ac.board.dao.User;
 import jp.ac.board.model.Login;
 import jp.ac.board.model.Register;
@@ -42,6 +43,10 @@ public class BoardController extends HttpServlet {
 		// TODO Auto-generated method stub
 		String respPage = "/WEB-INF/board/index.jsp";
 		String methodType = request.getParameter("type");
+		
+		Board board = new Board();
+		ArrayList<Board> boards = board.getAll();
+		request.setAttribute("boards", boards);
 	
 		if("registerpage".equals(methodType) && methodType != null) {
 				respPage = "/WEB-INF/board/member_reg.jsp";
@@ -94,7 +99,7 @@ public class BoardController extends HttpServlet {
 			if(flg) {
 				User user = new User();
 				ArrayList<User> users = user.getAll();
-				request.setAttribute("msg", new ArrayList<String>(Arrays.asList("逋ｻ骭ｲ縺悟ｮ御ｺ�＠縺ｾ縺励◆�√≠縺ｪ縺溘�ID縺ｯ" + users.size() + "縺ｧ縺�")));
+				request.setAttribute("msg", new ArrayList<String>(Arrays.asList("登録が完了しました！あなたのIDは" + users.size() + "です")));
 			} else {
 				request.setAttribute("msg", register.getErrCode());
 			}
@@ -107,12 +112,15 @@ public class BoardController extends HttpServlet {
 					request.getParameter("anchor") : "";
 			String comment = (request.getParameter("comment") != null && !request.getParameter("comment").isEmpty()) ?
 					request.getParameter("comment") : "";
-
-			Post post = new Post();
-			boolean b = post.insertPost(anchor, comment, request);
+					
+			HttpSession session = request.getSession();
+			if(session.getAttribute("User") != null) {
+				Post post = new Post();
+				boolean b = post.insertPost(anchor, comment, request);
+			} else {
+				request.setAttribute("msg", new ArrayList<String>(Arrays.asList("ログインしてください。")));
+			}
 			
-			request.setAttribute("post_status",b);
-
 		}else if(methodType.equals("search")){
 			String searchwd = "";
 			if(request.getParameter("searchwd") != null && request.getParameter("searchwd").isEmpty()){
@@ -121,6 +129,11 @@ public class BoardController extends HttpServlet {
 		boolean b = search.search(searchwd, request);
 		request.setAttribute("search_status",b);
 		}
+		
+		Board board = new Board();
+		ArrayList<Board> boards = board.getAll();
+		request.setAttribute("boards", boards);
+		
 		request.getRequestDispatcher(respPage).forward(request,response);
 	}
 }
