@@ -12,6 +12,10 @@ public class Board extends Dao {
 	private String comment;
 	private String createdAt;
 	
+	public Board(){
+		
+	}
+	
 	public Board(int boardId, int userId, String userName, String comment, String createdAt) {
 		super();
 		this.boardId = boardId;
@@ -109,7 +113,7 @@ public class Board extends Dao {
 		ArrayList<Board> boards = new ArrayList<>();
 		open();
 		try {
-			ResultSet result = selectWhere("SELECT * FROM board where userid=?;", where);
+			ResultSet result = selectWhere("SELECT * FROM board where username=?;", where);
 			while(result.next()) {
 				boards.add(new Board(
 							result.getInt("boardId"),

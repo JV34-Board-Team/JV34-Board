@@ -31,8 +31,10 @@
 		</li><br>
 		<li><a href="${pageContext.request.contextPath}/BoardController?type=registerpage">新規登録</a></li>
 		<li>
-			<form action="#" method="POST" style="display:inline"><input type="text" name="search">
-				<input type="submit" value="検索">
+			<form action="#" method="POST" style="display:inline">
+			<input type="text" name="searchwd">
+			<input type="hidden" name="type" value="search">
+			<input type="submit" value="検索">
 			</form>
 		</li>
 	</ul>

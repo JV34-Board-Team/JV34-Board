@@ -18,6 +18,7 @@ import jp.ac.board.*;
 import jp.ac.board.dao.User;
 import jp.ac.board.model.Login;
 import jp.ac.board.model.Register;
+import jp.ac.board.model.Search;
 /**
  * Servlet implementation class BoardContoroller
  */
@@ -59,6 +60,7 @@ public class BoardController extends HttpServlet {
 		String methodType = "hogehoge";
 		String respPage = "/WEB-INF/board/index.jsp";
 		Login login = new Login();
+		Search search = new Search();
 		
 		if(request.getParameter("type") != null && !request.getParameter("type").isEmpty()){
 			methodType = request.getParameter("type");
@@ -112,12 +114,12 @@ public class BoardController extends HttpServlet {
 			request.setAttribute("post_status",b);
 
 		}else if(methodType.equals("search")){
-//			String searchwd = "";
-//			if(request.getParameter("searchwd") != null && request.getParameter("searchwd").isEmpty()){
-//				searchwd = request.getParameter("searchwd");
-//			}
-//		boolean b = new Search(searchwd);
-//		request.setAttribute("search_status",b);
+			String searchwd = "";
+			if(request.getParameter("searchwd") != null && request.getParameter("searchwd").isEmpty()){
+				searchwd = request.getParameter("searchwd");
+			}
+		boolean b = search.search(searchwd, request);
+		request.setAttribute("search_status",b);
 		}
 		request.getRequestDispatcher(respPage).forward(request,response);
 	}
