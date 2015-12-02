@@ -74,7 +74,7 @@
 <div id="footer">
 
 	<div id="comment_form">
-		<form action="${pageContext.request.contextPath}/BoardController">
+		<form action="${pageContext.request.contextPath}/BoardController" method="post">
 			アンカー:<input type="number" name="anchor"><br />
 			コメント:<input type="text" name="comment" id="post_comment">	<br />
 			<input type="hidden" name="type" value="posting">

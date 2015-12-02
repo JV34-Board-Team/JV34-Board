@@ -12,7 +12,7 @@ public class Post {
 	public boolean insertPost(String anchor, String comment, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
-		User user = (User)session.getAttribute("user");
+		User user = (User)session.getAttribute("User");
 		Board board = new Board(0, user.getUserId(), user.getUserName(), comment, "");
 		int ret = board.insert();
 		
