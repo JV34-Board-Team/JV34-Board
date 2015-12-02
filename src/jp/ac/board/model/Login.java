@@ -27,7 +27,7 @@ public class Login {
 		User user = new User();
 		ArrayList<User> users = user.getAll();
 		for(User u : users){
-			if(id == u.getUserId()){
+			if(id == u.getUserId()){				
 				if(passwd.equals(u.getPasswd())){
 					HttpSession session = request.getSession();
 					session.setAttribute("User", u);

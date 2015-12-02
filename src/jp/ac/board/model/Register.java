@@ -17,23 +17,23 @@ public class Register {
 	public boolean userRegister(HttpServletRequest request) {
 
 		if(!Validation.create(request, "name", "require")) {
-			errCode.add("ユーザ名が入力されていません。");
+			errCode.add("繝ｦ繝ｼ繧ｶ蜷阪′蜈･蜉帙＆繧後※縺�∪縺帙ｓ縲�");
 		}
 		
 		if(!Validation.create(request, "passwd", "require")) {
-			errCode.add("パスワードが入力されていません。");
+			errCode.add("繝代せ繝ｯ繝ｼ繝峨′蜈･蜉帙＆繧後※縺�∪縺帙ｓ縲�");
 		}
 		
 		if(!Validation.create(request, "again_passwd", "require")) {
-			errCode.add("確認用パスワードが入力されていません。");
+			errCode.add("遒ｺ隱咲畑繝代せ繝ｯ繝ｼ繝峨′蜈･蜉帙＆繧後※縺�∪縺帙ｓ縲�");
 		}
 
 		if(!Validation.create(request, "passwd", "confirm")) {
-			errCode.add("確認用パスワードが一致しません。");
+			errCode.add("遒ｺ隱咲畑繝代せ繝ｯ繝ｼ繝峨′荳��縺励∪縺帙ｓ縲�");
 		}
 		
 		if(!Validation.create(request, "gender", "require") || !Validation.create(request, "gender", "number")) {
-			errCode.add("性別が不正な値です。");
+			errCode.add("諤ｧ蛻･縺御ｸ肴ｭ｣縺ｪ蛟､縺ｧ縺吶�");
 		}
 		
 		if(errCode.isEmpty()) {
