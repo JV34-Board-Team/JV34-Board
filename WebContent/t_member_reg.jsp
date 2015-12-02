@@ -56,7 +56,7 @@
 		<div id="submit_button">
 			<p><input id="reg_button" type="submit" value="登録"></p>
 		</div>
-		
+		<input type="hidden" name="type" value="register">
 	</form>
 </div>
 

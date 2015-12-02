@@ -1,6 +1,8 @@
 package jp.ac.board.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import javax.servlet.ServletException;
@@ -13,6 +15,9 @@ import javax.servlet.http.HttpSession;
 import org.apache.catalina.Session;
 
 import jp.ac.board.*;
+import jp.ac.board.dao.User;
+import jp.ac.board.model.Login;
+import jp.ac.board.model.Register;
 /**
  * Servlet implementation class BoardContoroller
  */
@@ -34,8 +39,16 @@ public class BoardController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/board/index.jsp").forward(request,response);
+		String respPage = "/WEB-INF/board/index.jsp";
+		String methodType = request.getParameter("type");
+	
+		if("registerpage".equals(methodType) && methodType != null) {
+				respPage = "/WEB-INF/board/member_reg.jsp";
+		}
+		
+		request.getRequestDispatcher(respPage).forward(request,response);
 	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -44,48 +57,68 @@ public class BoardController extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		String methodType = "hogehoge";
-		if(request.getParameter("type") != null && request.getParameter("type").isEmpty()){
+		String respPage = "/WEB-INF/board/index.jsp";
+		Login login = new Login();
+		
+		if(request.getParameter("type") != null && !request.getParameter("type").isEmpty()){
 			methodType = request.getParameter("type");
 		}
-//		if(methodType.equals("login")){
-//			String id = "";
-//			String pass = "";
-//			if(request.getParameter("id") != null && request.getParameter("id").isEmpty()){
-//				id = request.getParameter("id");
-//			}
-//			if(request.getParameter("pass") != null && request.getParameter("pass").isEmpty()){
-//				pass = request.getParameter("pass");
-//			}
-//			boolean b = new Login(id,pass);
-//			request.setAttribute("status",b);
-//			request.getRequestDispatcher("/WEB-INF/board/index.jsp").forward(request,response);
-//		} else if(methodType.equals("logout")){
-//			boolean b = new Logout();
-//			request.setAttribute("status",b);
-//			request.getRequestDispatcher("/WEB-INF/board/index.jsp").forward(request,response);
-//		}else if(methodType.equals("register")){
-//			request.getRequestDispatcher("/WEB-INF/board/member_reg.jsp").forward(request,response);
-//		}else if(methodType.equals("posting")){
-//			
-//			String anchor = (request.getParameter("anchor") != null && request.getParameter("anchor").isEmpty()) ?
-//					request.getParameter("anchor") : "";
-//			String comment = (request.getParameter("comment") != null && request.getParameter("comment").isEmpty()) ?
-//					request.getParameter("comment") : "";
-//
-//			boolean b = new Post(anchor, comment, request);
-//			request.setAttribute("post_status",b);
-//			request.getRequestDispatcher("/WEB-INF/board/index.jsp").forward(request,response);
+		
+		if(methodType.equals("login")){
+			
+			int id = 0;
+			String pass = "";
+			if(request.getParameter("id") != null && request.getParameter("id").isEmpty()){
+				id = Integer.parseInt(request.getParameter("id"));
+			}
+			if(request.getParameter("pass") != null && request.getParameter("pass").isEmpty()){
+				pass = request.getParameter("pass");
+			}
+			boolean b = login.login(id, pass, request);
+			System.out.println(b);
+			request.setAttribute("status",b);
+			
+			
+		} else if(methodType.equals("logout")){
+			
+			boolean b = login.logout(request);
+			request.setAttribute("status",b);
+			request.getRequestDispatcher("/WEB-INF/board/index.jsp").forward(request,response);
 
-//		}else if(methodType.equals("search")){
+		}else if(methodType.equals("register")){
+			
+			Register register = new Register();
+			boolean flg = register.userRegister(request);
+			if(flg) {
+				User user = new User();
+				ArrayList<User> users = user.getAll();
+				request.setAttribute("msg", new ArrayList<String>(Arrays.asList("登録が完了しました！あなたのIDは" + users.size() + "です")));
+			} else {
+				request.setAttribute("msg", register.getErrCode());
+			}
+			
+			respPage = "/WEB-INF/board/member_reg.jsp";
+		
+		}else if(methodType.equals("posting")){
+
+			String anchor = (request.getParameter("anchor") != null && request.getParameter("anchor").isEmpty()) ?
+					request.getParameter("anchor") : "";
+			String comment = (request.getParameter("comment") != null && request.getParameter("comment").isEmpty()) ?
+					request.getParameter("comment") : "";
+
+			Post post = new Post();
+			boolean b = post.insertPost(anchor, comment, request);
+			
+			request.setAttribute("post_status",b);
+
+		}else if(methodType.equals("search")){
 //			String searchwd = "";
 //			if(request.getParameter("searchwd") != null && request.getParameter("searchwd").isEmpty()){
 //				searchwd = request.getParameter("searchwd");
 //			}
 //		boolean b = new Search(searchwd);
 //		request.setAttribute("search_status",b);
-//		request.getRequestDispatcher("/WEB-INF/board/index.jsp").forward(request,response);
-//		}else{
-//		request.getRequestDispatcher("/WEB-INF/board/index.jsp").forward(request,response);
-//		}
+		}
+		request.getRequestDispatcher(respPage).forward(request,response);
 	}
 }

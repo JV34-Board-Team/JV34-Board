@@ -7,11 +7,9 @@ import jp.ac.board.dao.*;
 
 public class Post {
 
-	public boolean Post(String anchor, String comment, HttpServletRequest request) {
-		return insertPost(anchor, comment, request);
-	}
+	public Post() {}
 	
-	private boolean insertPost(String anchor, String comment, HttpServletRequest request) {
+	public boolean insertPost(String anchor, String comment, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("user");

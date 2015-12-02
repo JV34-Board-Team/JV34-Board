@@ -1,4 +1,5 @@
 package jp.ac.board.model;
+
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +23,7 @@ public class Login {
 		this.request = request;
 	}
 	
-	public boolean login(){
+	public boolean login(int id,String passwd,HttpServletRequest request){
 		User user = new User();
 		ArrayList<User> users = user.getAll();
 		for(User u : users){
@@ -37,10 +38,10 @@ public class Login {
 		return false;
 	}
 	
-	public boolean logout(){
+	public boolean logout(HttpServletRequest request){
 		HttpSession session = request.getSession();
 		session.removeAttribute("User");
-		return false;
+		return true;
 	}
-
+	
 }

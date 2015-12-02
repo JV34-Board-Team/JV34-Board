@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>会員登録</title>
-<link rel="stylesheet" href="../css/style.css" type="text/css">
-<link rel="stylesheet" href="../css/reg_style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reg_style.css" type="text/css">
 </head>
 <body>
 
@@ -24,17 +24,11 @@
 	<h2>会員登録</h2>
 	
 	<!-- 情報を入力するフォーム -->
-	<form action="#" method="POST" name="form">
+	<form action="${pageContext.request.contextPath}/BoardController" method="POST">
 		<table class="reg_information">
 			<tr>
 				<th>ユーザー名</th>
 				<td><input type="text" name="name" size="30"></td>
-			</tr>
-			<tr>
-				<th>ID</th>
-				<td>
-					<input type="text" name="ID">
-				</td>
 			</tr>
 			<tr>
 				<th>パスワード</th>
@@ -47,17 +41,28 @@
 			<tr>
 				<th>性別</th>
 				<td>
-					<input type="radio" name="gender" value="">男性
-					<input type="radio" name="gender" value="">女性
+					<input type="radio" name="gender" value="0">男性
+					<input type="radio" name="gender" value="1">女性
 				</td>
 			</tr>
 		</table>
 			
 		<div id="submit_button">
 			<p><input type="submit" value="登録"></p>
+			<button><a href="${pageContext.request.contextPath}/BoardController">戻る</a></button>
 		</div>
-		
+		<input type="hidden" name="type" value="register">
 	</form>
+	<%
+	ArrayList<String> msg = (ArrayList<String>)request.getAttribute("msg");
+	if(msg != null && !msg.isEmpty()) {
+		for(String ms : msg) {
+	%>
+		<p><%= ms %></p>
+	<%
+		}
+	}
+	%>
 </div>
 
 
