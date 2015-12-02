@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>掲示板(´・ω・`)</title>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 </head>
 <body>
 <!-- =============== ヘッダー =============== -->
@@ -16,19 +16,18 @@
 	
 	<ul id="menu">
 		<!-- メニュー内容 -->
-		<li><div id="login"><label for="panel">LOGIN</label></div>
+		<li>
 		  <input type="checkbox" id="panel" class="onoff">
-		  <form action="${pageContext.request.contextPath}/BoardController" method="post">
-		  <ul id="pull">
-		  	<li>ID<input type="text" name="id"></li>
-		  	<li>PW<input type="text" name="pass"></li>
-		  </ul>
+		  <form action="${pageContext.request.contextPath}/BoardController" method="POST">
+		  	ID:<input type="text" name="id">
+		  	PW:<input type="text" name="pass">
+		  	<input type="submit" value="ログイン">
 		  <input type="hidden" name="type" value="post">
 		  </form>
-		</li>
+		</li><br>
 		<li><a href="${pageContext.request.contextPath}/BoardController?type=registerpage">新規登録</a></li>
 		<li>
-			<form action="#" style="display:inline"><input type="text" name="search">
+			<form action="#" method="POST" style="display:inline"><input type="text" name="search">
 				<input type="submit" value="検索">
 			</form>
 		</li>
