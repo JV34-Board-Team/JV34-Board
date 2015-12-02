@@ -131,8 +131,10 @@ public class BoardController extends HttpServlet {
 		}
 		
 		Board board = new Board();
-		ArrayList<Board> boards = board.getAll();
-		request.setAttribute("boards", boards);
+		if(request.getAttribute("boards") == null){
+			ArrayList<Board> boards = board.getAll();
+			request.setAttribute("boards", boards);
+		}
 		
 		request.getRequestDispatcher(respPage).forward(request,response);
 	}
