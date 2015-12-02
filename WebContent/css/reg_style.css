@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+
+/* メイン内容-------------------------------*/
+#reg_main{
+	margin-left:10px;				/*メインの全体を右に*/
+}
+#reg_main th{
+	border:solid 1px;				/**/
+	background-color:#ffcc66;		/**/
+}
+#reg_main td{
+	width:300px;
+	background-color:#ffdd22;		/**/
+	border:solid 1px;				/**/
+}
+
+#reg_button{
+	font-size:15px;					/**/
+	width:100px;					/**/
+	height:35px;					/**/
+}

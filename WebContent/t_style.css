@@ -1,0 +1,118 @@
+@CHARSET "UTF-8";
+
+/* body全体設定---------------------------*/
+body{
+	margin-left:0;				/*左の余白を処理*/
+	background-color:#ffffcc;
+}
+/* ヘッター---------------------------------*/
+/*メニューバー*/
+#menu{
+	width: 100%; 				/* ナビゲーションの幅 */
+	border-top: 1px #333333 solid;/* 上境界線 */
+	border-bottom: 1px #333333 solid;/* 上境界線 */
+	padding-top: 20px;			/*上の余白を変更*/
+	padding-bottom: 20px;		/*下の余白を変更*/
+}
+/*メニュー要素*/
+#menu li {	
+	display:inline;				/* 横並び指定 */
+	width: 100px; 				/* メニュー項目の幅 */
+	margin: 0 auto; 			/* センターに配置 */
+	padding-right: 50px;		/*右幅の余白変更*/
+	font-size:18px;				/*文字サイズ変更*/
+}
+/*loginのラベルのデザイン設定*/
+#login{
+	width: 55px;
+	padding:5px;
+	margin-bottom:5px;
+	border:solid 1px;
+}
+
+/*ログインのアクション*/
+#pull{
+	-webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/*LOGINラベルのアクション設定*/
+input[type="checkbox"].onoff{
+    display: none;
+}
+input[type="checkbox"].onoff + ul{
+    height: 0;
+    overflow: hidden;
+}
+input[type="checkbox"].onoff:checked + ul{
+    height: 30px;
+}
+
+/* メイン内容-------------------------------*/
+
+/*掲示板全体*/
+#board_main{
+	padding-bottom:200px;		/*フッターのコメント投稿枠の分余白を変更*/
+	margin-left:5px;			/*左の余白を変更*/
+}
+
+/*コメント全体の枠*/
+.res{
+	background:#ffcc66;
+	margin: 0 0 10px 0;			/*投稿されたコメント枠の余白を変更*/
+	border:solid 1px;			/*投稿されたコメント枠に黒線を設定*/
+}
+/*投稿コメントの番号、名前*/
+.res_head{
+	font-size: 13px;			/*投稿されたコメントの番号と投稿者の名前の文字サイズを変更*/
+}
+/*投稿コメントの投稿日*/
+.res_foot{
+	text-align:right;			/*投稿されたコメントの投稿日を左寄せ*/
+	font-size: 13px;			/*投稿されたコメントの投稿日の文字サイズを変更*/
+}
+
+/* フッター---------------------------------*/
+#footer{
+	padding-top:5px;			/*上の余白を変更*/
+	border-top:solid 1px;		/*上に黒線を設定*/
+	width:100%;					/*横幅を画面いっぱいに設定*/
+	height:200px;				/*高さを設定*/
+	background-color : #ffffaa;	/*背景色を設定*/
+	position:fixed;				/*ブラウザ下にフッターに固定*/
+    bottom:0;					/*ブラウザ下にフッターを固定*/
+}
+/*アンカーデザイン*/
+#comment_an{
+	background-color:#cc9966;
+	border:solid 1px;
+	width:233px;
+	margin:10px 0 5px 0;}
+/*コメントデザイン*/
+#comment_co{
+	background-color:#cc9966;
+	border:solid 1px;
+	width:656px;
+	margin-bottom:10px;
+}
+/*投稿ボタンデザイン*/
+#post_button{
+	font-size:20px;
+	width:200px;
+	height:40px;
+}
+/*投稿枠*/
+#post_comment{
+	width:600px;				/*投稿コメントの枠サイズを変更*/
+	height:100px;				/*投稿コメントの枠サイズを変更*/
+}
+
+#comment_form{
+	margin-left:5px;			/*フッターのコメント枠の余白を変更*/
+}
