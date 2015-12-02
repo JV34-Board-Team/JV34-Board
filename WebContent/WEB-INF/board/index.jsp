@@ -17,17 +17,29 @@
 	<ul id="menu">
 		<!-- メニュー内容 -->
 		<li>
-		  <input type="checkbox" id="panel" class="onoff">
+		<% 
+		if(session.getAttribute("User")!=null){
+			User u = (User)session.getAttribute("User");
+			String name = u.getUserName();
+		%>
+			<p>ようこそ<%=name %>さん(´・ω・｀)</p>
+			<form action="${pageContext.request.contextPath}/BoardController" method="POST"">
+		  <input type="submit" value="ログout">
+		  <input type="hidden" name="type" value="logout">
+		  </form>
+		<% 
+		}else{
+		%>
+		<input type="checkbox" id="panel" class="onoff">
 		  <form action="${pageContext.request.contextPath}/BoardController" method="POST">
 		  	ID:<input type="text" name="id">
 		  	PW:<input type="password" name="pass">
 		  	<input type="submit" value="ログイン">
 		  <input type="hidden" name="type" value="login">
 		  </form>
-		  <form action="${pageContext.request.contextPath}/BoardController" method="POST"">
-		  <input type="submit" value="ログout">
-		  <input type="hidden" name="type" value="logout">
-		  </form>
+		<%
+		}
+		%>
 		</li><br>
 		<li><a href="${pageContext.request.contextPath}/BoardController?type=registerpage">新規登録</a></li>
 		<li>
@@ -75,8 +87,8 @@
 
 	<div id="comment_form">
 		<form action="${pageContext.request.contextPath}/BoardController">
-			アンカー:<input type="number" name="anchor"><br />
-			コメント:<input type="text" name="comment" id="post_comment">	<br />
+			アンカー:<input type="number" name="anchor" id="anchor"><br />
+			コメント:<textarea name="comment" rows="10" cols="140"></textarea>	<br />
 			<input type="hidden" name="type" value="posting">
 			<input type="submit" name="action" value="投稿">
 		</form>

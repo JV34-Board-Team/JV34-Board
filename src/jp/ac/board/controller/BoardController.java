@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.Session;
 
 import jp.ac.board.*;
 import jp.ac.board.dao.User;
@@ -92,7 +91,7 @@ public class BoardController extends HttpServlet {
 			if(flg) {
 				User user = new User();
 				ArrayList<User> users = user.getAll();
-				request.setAttribute("msg", new ArrayList<String>(Arrays.asList("逋ｻ骭ｲ縺悟ｮ御ｺ�＠縺ｾ縺励◆�√≠縺ｪ縺溘�ID縺ｯ" + users.size() + "縺ｧ縺�")));
+				request.setAttribute("msg", new ArrayList<String>(Arrays.asList("騾具ｽｻ鬪ｭ�ｲ邵ｺ謔滂ｽｮ蠕｡�ｺ�ｽ��ｸｺ�ｾ邵ｺ蜉ｱ笳�ｿｽ竏壺旺邵ｺ�ｪ邵ｺ貅假ｿｽID邵ｺ�ｯ" + users.size() + "邵ｺ�ｧ邵ｺ�ｽ")));
 			} else {
 				request.setAttribute("msg", register.getErrCode());
 			}

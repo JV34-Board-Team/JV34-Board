@@ -83,7 +83,7 @@ input[type="checkbox"].onoff:checked + ul{
 	padding-top:5px;			/*上の余白を変更*/
 	border-top:solid 1px;		/*上に黒線を設定*/
 	width:100%;					/*横幅を画面いっぱいに設定*/
-	height:200px;				/*高さを設定*/
+	height:210px;				/*高さを設定*/
 	background-color : #ffffaa;	/*背景色を設定*/
 	position:fixed;				/*ブラウザ下にフッターに固定*/
     bottom:0;					/*ブラウザ下にフッターを固定*/
@@ -116,4 +116,8 @@ input[type="checkbox"].onoff:checked + ul{
 
 #comment_form{
 	margin-left:5px;			/*フッターのコメント枠の余白を変更*/
+}
+
+#anchor{
+	margin:5px;
 }
