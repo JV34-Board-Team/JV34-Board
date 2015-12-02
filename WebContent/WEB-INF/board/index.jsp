@@ -20,9 +20,13 @@
 		  <input type="checkbox" id="panel" class="onoff">
 		  <form action="${pageContext.request.contextPath}/BoardController" method="POST">
 		  	ID:<input type="text" name="id">
-		  	PW:<input type="text" name="pass">
+		  	PW:<input type="password" name="pass">
 		  	<input type="submit" value="ログイン">
-		  <input type="hidden" name="type" value="post">
+		  <input type="hidden" name="type" value="login">
+		  </form>
+		  <form action="${pageContext.request.contextPath}/BoardController" method="POST"">
+		  <input type="submit" value="ログout">
+		  <input type="hidden" name="type" value="logout">
 		  </form>
 		</li><br>
 		<li><a href="${pageContext.request.contextPath}/BoardController?type=registerpage">新規登録</a></li>

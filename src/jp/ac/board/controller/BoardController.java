@@ -68,10 +68,10 @@ public class BoardController extends HttpServlet {
 			
 			int id = 0;
 			String pass = "";
-			if(request.getParameter("id") != null && request.getParameter("id").isEmpty()){
+			if(request.getParameter("id") != null && !request.getParameter("id").isEmpty()){
 				id = Integer.parseInt(request.getParameter("id"));
 			}
-			if(request.getParameter("pass") != null && request.getParameter("pass").isEmpty()){
+			if(request.getParameter("pass") != null && !request.getParameter("pass").isEmpty()){
 				pass = request.getParameter("pass");
 			}
 			boolean b = login.login(id, pass, request);
@@ -82,8 +82,8 @@ public class BoardController extends HttpServlet {
 		} else if(methodType.equals("logout")){
 			
 			boolean b = login.logout(request);
+			System.out.println(b);
 			request.setAttribute("status",b);
-			request.getRequestDispatcher("/WEB-INF/board/index.jsp").forward(request,response);
 
 		}else if(methodType.equals("register")){
 			
@@ -92,7 +92,7 @@ public class BoardController extends HttpServlet {
 			if(flg) {
 				User user = new User();
 				ArrayList<User> users = user.getAll();
-				request.setAttribute("msg", new ArrayList<String>(Arrays.asList("登録が完了しました！あなたのIDは" + users.size() + "です")));
+				request.setAttribute("msg", new ArrayList<String>(Arrays.asList("逋ｻ骭ｲ縺悟ｮ御ｺ�＠縺ｾ縺励◆�√≠縺ｪ縺溘�ID縺ｯ" + users.size() + "縺ｧ縺�")));
 			} else {
 				request.setAttribute("msg", register.getErrCode());
 			}
@@ -101,9 +101,9 @@ public class BoardController extends HttpServlet {
 		
 		}else if(methodType.equals("posting")){
 
-			String anchor = (request.getParameter("anchor") != null && request.getParameter("anchor").isEmpty()) ?
+			String anchor = (request.getParameter("anchor") != null && !request.getParameter("anchor").isEmpty()) ?
 					request.getParameter("anchor") : "";
-			String comment = (request.getParameter("comment") != null && request.getParameter("comment").isEmpty()) ?
+			String comment = (request.getParameter("comment") != null && !request.getParameter("comment").isEmpty()) ?
 					request.getParameter("comment") : "";
 
 			Post post = new Post();
