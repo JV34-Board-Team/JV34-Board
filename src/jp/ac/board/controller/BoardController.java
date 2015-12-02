@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.Session;
 
 import jp.ac.board.*;
 import jp.ac.board.dao.Board;
@@ -100,6 +99,7 @@ public class BoardController extends HttpServlet {
 				User user = new User();
 				ArrayList<User> users = user.getAll();
 				request.setAttribute("msg", new ArrayList<String>(Arrays.asList("登録が完了しました！あなたのIDは" + users.size() + "です")));
+
 			} else {
 				request.setAttribute("msg", register.getErrCode());
 			}
